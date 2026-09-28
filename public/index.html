@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#100d1c">
+  <title>Kartu Rusuh — Mode Neraka</title>
+  <link rel="stylesheet" href="/style.css?v=2">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Kartu Rusuh, halaman utama"><span class="brand-mark">✦</span><span>KARTU <b>RUSUH</b></span></a>
+    <div class="top-actions"><span class="server-pill"><span id="conn-dot" class="dot"></span><span id="conn-text">Menghubungkan…</span></span><button id="sound" class="icon-button" title="Suara">♫</button></div>
+  </header>
+  <main>
+    <section id="home" class="home shell">
+      <div class="home-copy">
+        <p class="eyebrow">MULTIPLAYER CARD MAYHEM</p>
+        <h1>Persahabatan<br><em>berakhir</em> di sini.</h1>
+        <p class="intro">Cocokkan warna, buang kartu, dan selamat dari serangan yang sama sekali tidak masuk akal.</p>
+        <div class="mode-banner"><span class="flame">✹</span><div><strong>MODE NERAKA</strong><small>+100 Kiamat · Instant Death · Cermin Absolut</small></div><span class="mode-on">AKTIF</span></div>
+      </div>
+      <div class="entry-panel glass">
+        <div class="panel-icon">♠</div><p class="eyebrow">SIAP MAIN?</p><h2>Masuk arena.</h2>
+        <label for="player-name">Nama pemain</label><input id="player-name" maxlength="18" autocomplete="nickname" placeholder="Nama panggilan lu">
+        <div class="mode-picker" aria-label="Pilih mode"><button id="mode-hell" class="selected" type="button">☄ Neraka</button><button id="mode-classic" type="button">♠ Klasik</button></div>
+        <details id="deck-settings" class="deck-settings"><summary>Atur kartu power up</summary><div class="power-grid"><label><input type="checkbox" value="kiamat" checked> +100 Kiamat</label><label><input type="checkbox" value="death" checked> Instant Death</label><label><input type="checkbox" value="swap" checked> Tukar Nasib</label><label><input type="checkbox" value="mirror" checked> Cermin Absolut</label><label><input type="checkbox" value="shield" checked> Perisai</label><label><input type="checkbox" value="revive" checked> Bangkit</label><label><input type="checkbox" value="curse" checked> Kutukan +3</label></div></details>
+        <button id="create" class="primary">Buat Room Neraka <span>→</span></button>
+        <div class="divider"><span>ATAU</span></div>
+        <label for="room-code">Punya kode room?</label><div class="join-row"><input id="room-code" maxlength="6" placeholder="KODE ROOM"><button id="join" class="secondary">Gabung</button></div>
+        <p class="micro">2–8 pemain • 15 detik per giliran • gratis dimainkan<br><a href="/cards.html">Lihat semua kartu Neraka ↗</a></p>
+      </div>
+    </section>
+    <section id="lobby" class="lobby shell hidden">
+      <div class="section-head"><div><p class="eyebrow">RUANG PERTEMPURAN</p><h2>Room <span id="lobby-code"></span></h2></div><span class="status-chip">MODE NERAKA <b>ON</b></span></div>
+      <div class="lobby-grid"><div class="glass lobby-main"><div class="room-card"><div><small>KODE UNDANGAN</small><strong id="share-code"></strong></div><button id="copy-link" class="secondary">Salin link ↗</button></div><h3>Para tersangka <span id="player-count"></span></h3><div id="lobby-players" class="lobby-players"></div><div class="lobby-bottom"><p>Host memulai saat semua pemain siap.</p><button id="start" class="primary">Mulai Ronde <span>⚡</span></button></div></div><aside class="glass rule-panel"><h3>Aturan singkat</h3><ol><li>Cocokkan <b>warna</b>, <b>angka</b>, atau simbol.</li><li>Habis kartu pertama menang.</li><li id="hell-rule">Serangan Neraka bisa mengeliminasi pemain.</li><li>Cermin, Perisai, dan Bangkit bisa menyelamatkan lu.</li></ol><div class="mini-card-preview"><img src="/assets/kiamat.png" alt="Ilustrasi kartu Kiamat"><div><strong>+100 KIAMAT</strong><small>Satu kartu. Seratus masalah.</small></div></div><p id="enabled-powers" class="enabled-powers"></p></aside></div>
+    </section>
+    <section id="game" class="game shell hidden">
+      <div class="game-head"><div><p class="eyebrow">MODE NERAKA · RONDE <span id="round-no"></span></p><h2 id="turn-label">Menunggu giliran...</h2></div><div class="round-info"><span id="room-badge"></span><span id="timer" class="timer">15</span></div></div>
+      <div class="game-layout"><div class="arena glass"><div id="players" class="players"></div><div id="attack-banner" class="attack-banner hidden"></div><div class="center-table"><div class="deck-stack"><div class="deck-back">✦<small>RUSUH</small></div><span>DEK <b id="deck-count">∞</b></span></div><div class="discard-slot" id="discard-slot"></div><div class="color-ring" id="color-ring"></div></div><div class="arena-bottom"><button id="draw" class="secondary">Ambil 1 Kartu</button><button id="accept" class="danger hidden">Terima Nasib ☠</button><span id="hint"></span></div></div><aside class="side-panel glass"><h3>Peristiwa terbaru</h3><div id="log" class="event-log"></div><div class="legend"><p>Power Ups Neraka</p><span>☄ +100 KIAMAT</span><span>☠ Instant Death</span><span>◇ Cermin Absolut</span><span>⬡ Perisai</span><span>✦ Bangkit</span></div></aside></div>
+      <div class="hand-area"><div class="hand-title"><div><p class="eyebrow">KARTU LU</p><h3 id="hand-count">0 kartu</h3></div><span id="hand-status"></span></div><div id="hand" class="hand"></div></div>
+    </section>
+    <section id="ended" class="end-screen shell hidden"><div class="glass end-card"><span class="end-icon">✦</span><p class="eyebrow">RONDE SELESAI</p><h2 id="winner-text">Pemenang!</h2><p id="end-subtitle">Mau coba balas dendam?</p><div id="end-players" class="end-players"></div><button id="rematch" class="primary">Main Lagi <span>↻</span></button><p id="rematch-hint" class="micro"></p></div></section>
+  </main>
+  <div id="choice" class="modal hidden"><div class="modal-backdrop"></div><div class="modal-card glass"><button id="choice-close" class="modal-close">×</button><p class="eyebrow">KARTU PILIHAN</p><h2 id="choice-title">Pilih efek</h2><p id="choice-desc"></p><div id="target-picker" class="picker"></div><div id="color-picker" class="color-picker"></div><button id="choice-confirm" class="primary">Mainkan kartu <span>→</span></button></div></div>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="/app.js?v=2" defer></script>
+</body>
+</html>
+
