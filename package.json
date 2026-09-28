@@ -1,0 +1,12 @@
+{
+  "name": "kartu-rusuh",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Game kartu multiplayer dengan Mode Neraka",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=24" }
+}
+
